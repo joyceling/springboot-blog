@@ -1,8 +1,13 @@
-package com.codeup.blog.springbootblog.controllers;
+package com.codeup.blog.springbootblog.models;
 
-public class PostsController {
+public class Post {
     private String title;
     private String body;
+
+    public Post (String title, String body){
+        this.title = title;
+        this.body = body;
+    }
 
     public String getTitle() {
         return title;

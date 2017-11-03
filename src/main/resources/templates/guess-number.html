@@ -3,6 +3,8 @@
 <head th:include="fragments/base :: head('Guess A Number')">
 </head>
 <body>
+    <main>
+
     <nav th:replace="fragments/base :: navbar"></nav>
 
     <p>The numbers rolled are
@@ -55,6 +57,7 @@
             </li>
         </ul>
     </p>
+    </main>
     <footer th:replace="fragments/base :: footer"></footer>
     <div th:replace="fragments/base :: scripts"></div>
 </body>
