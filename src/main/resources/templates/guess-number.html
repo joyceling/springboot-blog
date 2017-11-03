@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Guess the Number</title>
+<head th:include="fragments/base :: head('Guess A Number')">
 </head>
 <body>
-    <h1>The number rolled is <span th:text="${roll}"></span>.</h1>
-    <h2>You guessed the number <span th:text="${number}"></span>.</h2>
-    <h2 th:if="${match}">
+    <nav th:replace="fragments/base :: navbar"></nav>
+
+    <p>The numbers rolled are
+        <span th:text="${roll}"></span>,
+        <span th:text="${roll2}"></span>, and
+        <span th:text="${roll3}"></span>
+    .</p>
+    <p>You guessed the number <span th:text="${number}"></span>.</p>
+
+    <p th:if="${match}">
         You guessed right!
 
+        <span th:text="${numberMatched}"></span> out of 3 dice matched your guess.
+        <br />
         <button><a href="/roll-dice">Play Again</a></button>
-    </h2>
-    <h2 th:unless="${match}">
-        You guessed wrong. Try again!
+    </p>
+    <p th:unless="${match}">
+        None of the die matched your guess. Try again!
 
         <ul>
             <li>
@@ -47,9 +54,8 @@
                 </button>
             </li>
         </ul>
-
-    </h2>
-
-
+    </p>
+    <footer th:replace="fragments/base :: footer"></footer>
+    <div th:replace="fragments/base :: scripts"></div>
 </body>
 </html>

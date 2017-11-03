@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Guess a Number</title>
+<head th:include="fragments/base :: head('Roll the Dice')">
 </head>
 <body>
-    <h1>Guess a number between 1 and 6.</h1>
+<nav th:replace="fragments/base :: navbar"></nav>
+<h1 th:replace="fragments/base :: header"></h1>
+    <p>Guess a number between 1 and 6.</p>
 <ul>
     <li>
         <button>
@@ -38,5 +38,8 @@
         </button>
     </li>
 </ul>
+
+<footer th:replace="fragments/base :: footer"></footer>
+<div th:replace="fragments/base :: scripts"></div>
 </body>
 </html>
