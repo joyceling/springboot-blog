@@ -7,5 +7,11 @@
 <body>
     <h1 th:text="${post.title}"></h1>
     <p th:text="${post.body}"></p>
+
+    <form method="post" action="@{/posts/{id}/delete(id=${post.id})}">
+        <input type="submit">Delete
+    </form>
+    <button type="submit"><a href="@{/posts/{id}/edit(id=${post.id})}"></a></button>
+
 </body>
 </html>
