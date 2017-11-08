@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Edit Post</title>
+<head th:include="fragments/base :: head('Edit Post')">
 </head>
 <body>
+<nav th:replace="fragments/base :: navbar-posts"></nav>
+<main>
 <h1>Edit a Post</h1>
 <form th:action="${'/posts/'+ post.id +'/edit'}" method="post" th:object="${post}">
     Title:
@@ -15,5 +15,8 @@
     <br />
     <input type="submit" />
 </form>
+</main>
+<footer th:replace="fragments/base :: footer"></footer>
+<div th:replace="fragments/base :: scripts"></div>
 </body>
 </html>

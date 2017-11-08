@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Create Posts</title>
+<head th:include="fragments/base :: head('Create Post')">
 </head>
 <body>
+<nav th:replace="fragments/base :: navbar-posts"></nav>
+<main>
+
     <h1>Create a Post</h1>
     <form action="/posts/create" method="post" th:object="${post}">
         Title:
@@ -15,5 +16,9 @@
         <br />
         <input type="submit" />
     </form>
+
+</main>
+<footer th:replace="fragments/base :: footer"></footer>
+<div th:replace="fragments/base :: scripts"></div>
 </body>
 </html>

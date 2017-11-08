@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Show Post</title>
+
+<head th:include="fragments/base :: head('Show Post')">
 </head>
 <body>
-    <h1 th:text="${post.title}"></h1>
+<main>
+
+    <nav th:replace="fragments/base :: navbar-posts"></nav>
+    <h1 th:text= "${post.title}"></h1>
     <p th:text="${post.body}"></p>
+    Created by:
+    <a th:href="@{'mailto: ' + ${post.user.email} }">
+        <span th:text="${post.user.username}"></span>
+    </a>
 
-    <form method="post" action="@{/posts/{id}/delete(id=${post.id})}">
-        <input type="submit">Delete
+    <form method="post" th:action="@{/posts/{id}/delete(id=${post.id})}">
+        <input type="submit" value="Delete" />
     </form>
-    <button type="submit"><a href="@{/posts/{id}/edit(id=${post.id})}"></a></button>
+    <button type="submit"><a th:href="@{/posts/{id}/edit(id=${post.id})}">Edit</a></button>
 
+</main>
+    <footer th:replace="fragments/base :: footer"></footer>
+    <div th:replace="fragments/base :: scripts"></div>
 </body>
 </html>

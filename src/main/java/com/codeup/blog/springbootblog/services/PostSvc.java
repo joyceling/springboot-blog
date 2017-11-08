@@ -29,12 +29,12 @@ public class PostSvc {
     }
 
     // Saves a post with just title and desc
-    public Post save (Post post) {
-        return (Post) postDao.save(post);
+    public void save (Post post) {
+        postDao.save(post);
     }
 
-    public Post delete (Long id) {
-        return delete(id);
+    public void delete (Long id) {
+        postDao.delete(id);
     }
 
     // Creates a bunch of dummy data

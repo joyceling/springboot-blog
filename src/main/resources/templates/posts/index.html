@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en" >
-<head>
-    <meta charset="UTF-8" />
-    <title>Show All Posts</title>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:include="fragments/base :: head('Show All Post')">
 </head>
 <body>
+    <nav th:replace="fragments/base :: navbar-posts"></nav>
+<main>
+
     <div th:each="post : ${posts}">
         <h1>
             <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}"></a>
         </h1>
         <p th:text="${post.body}"></p>
     </div>
+
+</main>
+    <footer th:replace="fragments/base :: footer"></footer>
+    <div th:replace="fragments/base :: scripts"></div>
 </body>
 </html>

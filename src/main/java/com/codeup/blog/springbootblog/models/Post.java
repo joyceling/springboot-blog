@@ -12,8 +12,12 @@ public class Post {
     @Column(length = 100, nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
+
+    @ManyToOne
+    @JoinColumn (name = "user_id")
+    private User user;
 
     public Post (Long id, String title, String body){
         this.title = title;
@@ -53,4 +57,12 @@ public class Post {
         this.body = body;
     }
 
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
