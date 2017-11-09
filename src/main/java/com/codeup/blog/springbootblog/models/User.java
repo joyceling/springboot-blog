@@ -28,6 +28,13 @@ public class User {
 
     public User () {}
 
+    public User(User copy) {
+        id = copy.id;
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
+
     public User (Long id, String username, String email, String password) {
         this.id = id;
         this.username = username;
