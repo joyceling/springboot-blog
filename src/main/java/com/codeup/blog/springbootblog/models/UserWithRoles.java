@@ -1,6 +1,9 @@
 package com.codeup.blog.springbootblog.models;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import java.util.Collection;
 import java.util.List;
@@ -15,26 +18,28 @@ public class UserWithRoles extends User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        String roles = StringUtils.collectionToCommaDelimitedString(userRoles);
+        return AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
+
 }
