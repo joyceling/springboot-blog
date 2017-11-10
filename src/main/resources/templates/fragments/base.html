@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:fragment="head(title)">
     <title th:text="${title}">Guess the Number</title>
     <meta charset="UTF-8" />
@@ -24,10 +25,25 @@
 </nav>
 
 <nav th:fragment="navbar-posts">
-    <div>
-        <a href="/posts" class="brand-logo">Logo</a>
+    <div sec:authorize="isAuthenticated()">
+        <a href="/posts" class="brand-logo">JavaJoyce.Life</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li id="user-loggedin">Hello, <span th:text="${#authentication.principal.username}"></span>!
+            </li>
+            <li><a href="/roll-dice">Play Guessing Game</a></li>
             <li><a href="/posts/create">Create Posts</a></li>
+            <form th:action="@{/logout}" th:method="post">
+                <button class="btn-link btn">Logout</button>
+            </form>
+        </ul>
+    </div>
+
+
+    <div sec:authorize="!isAuthenticated()">
+        <a href="/posts" class="brand-logo">JavaJoyce.Life</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/login">Log In</a></li>
+            <li><a href="/users/sign-up">Sign up</a></li>
         </ul>
     </div>
 </nav>

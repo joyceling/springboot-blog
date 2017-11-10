@@ -5,6 +5,7 @@ import com.codeup.blog.springbootblog.models.User;
 import com.codeup.blog.springbootblog.repositories.UsersRepository;
 import com.codeup.blog.springbootblog.services.PostSvc;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -58,7 +59,7 @@ public class PostController {
          @ModelAttribute Post post
     ) {
 
-        User user = usersrepo.findOne(1L);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(user);
 
        postsvc.save(post);

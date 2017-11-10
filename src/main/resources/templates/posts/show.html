@@ -1,23 +1,25 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head th:include="fragments/base :: head('Show Post')">
 </head>
 <body>
 <main>
-
     <nav th:replace="fragments/base :: navbar-posts"></nav>
     <h1 th:text= "${post.title}"></h1>
     <p th:text="${post.body}"></p>
     Created by:
-    <a th:href="@{'mailto: ' + ${post.user.email} }">
+    <a th:href="@{'mailto: ' + @{post.user.email} }">
         <span th:text="${post.user.username}"></span>
     </a>
 
-    <form method="post" th:action="@{/posts/{id}/delete(id=${post.id})}">
-        <input type="submit" value="Delete" />
-    </form>
-    <button type="submit"><a th:href="@{/posts/{id}/edit(id=${post.id})}">Edit</a></button>
+    <div sec:authorize="isAuthenticated()">
+        <form method="post" th:action="@{/posts/{id}/delete(id=${post.id})}">
+            <input type="submit" value="Delete" />
+        </form>
+        <button type="submit"><a th:href="@{/posts/{id}/edit(id=${post.id})}">Edit</a></button>
+    </div>
+
 
 </main>
     <footer th:replace="fragments/base :: footer"></footer>

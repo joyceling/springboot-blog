@@ -3,7 +3,8 @@
 <head th:include = "fragments/base :: head('Sign up')">
 </head>
 <body>
-    <nav th:replace="fragments/base :: navbar-posts"></nav>
+<nav th:replace="fragments/base :: navbar-posts"></nav>
+<main>
     <h1>Create an account</h1>
     <form th:action="@{/users/sign-up}" method="POST" th:object="${user}">
         <label for="username">Username</label>
@@ -18,7 +19,7 @@
 
         <input value="Sign me up!" type="submit" />
     </form>
-
-    <nav th:replace="fragments/base :: footer"></nav>
+</main>
+<nav th:replace="fragments/base :: footer"></nav>
 </body>
 </html>

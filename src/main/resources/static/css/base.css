@@ -8,6 +8,15 @@ main {
     flex: 1 0 auto;
 }
 
+form {
+    display: inline;
+    margin-right: 8px;
+}
+
+#user-loggedin {
+    margin: 0 15px;
+}
+
 h1 {
     text-align: center;
 }
